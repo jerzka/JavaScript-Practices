@@ -1,18 +1,18 @@
 /*
 PROBLEM:
 Numbers from 1-100
-where if number divisible by 3 then show foo
-where if number divisible by 5 then show baz
-where if number divisible by 3 and divisible by 5 then show foobar
+where if number divisible by 2 then show foo
+where if number divisible by 3 then show baz
+where if number divisible by 2 and divisible by 3 then show fooBaz
 where other then show number
 */
 
-const firstDivider = 3;
-const secondDivider = 5;
+const firstDivider = 2;
+const secondDivider = 3;
 
 const firstDividerText = "foo";
 const secondDividerText = "baz";
-const bothDividersText = "foobaz";
+const bothDividersText = "fooBaz";
 
 const n = 100;
 
@@ -64,10 +64,11 @@ const forExecutionTime = (limit = 30) => {
     return t1-t0;
 }
 
-//let whileExecutionTimeCall = whileExecutionTime(n);
+let whileExecutionTimeCall = whileExecutionTime(n);
 let doWhileExecutionTimeCall = doWhileExecutionTime(n);
 let forExecutionTimeCall = forExecutionTime(n);
 
 console.error('Execution time for "while" loop is: ' + whileExecutionTime(n).toFixed(2) + ' milliseconds.');
 console.error('Execution time for "do-while" loop is: ' + doWhileExecutionTimeCall.toFixed(2) + ' milliseconds.');
 console.error('Execution time for "for" loop is: ' + forExecutionTimeCall.toFixed(2) + ' milliseconds.');
+
