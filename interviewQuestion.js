@@ -7,97 +7,67 @@ where if number divisible by 3 and divisible by 5 then show foobar
 where other then show number
 */
 
-const divBy3 = "foo";
-const divBy5 = "baz";
-const divBy3and5 = "foobaz";
+const firstDivider = 3;
+const secondDivider = 5;
+
+const firstDividerText = "foo";
+const secondDividerText = "baz";
+const bothDividersText = "foobaz";
 
 const n = 100;
-let doWhileExecutionTime;
+
+const dividedByLogs = (counter, firstDivider, firstDividerText, secondDivider, secondDividerText, bothDividersText) => {
+    if(counter % firstDivider == 0 && counter % secondDivider == 0){
+        console.log(bothDividersText);
+    } else if (counter % firstDivider == 0){
+        console.log(firstDividerText);
+    }else if(counter % secondDivider == 0){
+        console.log(secondDividerText);
+    }else{
+        console.log(counter);
+    }
+}
 
 //Arrow function
-const whileExecutionTime = () =>{
+const whileExecutionTime = (limit = 30) => {
     console.warn("while");
     const t0 = performance.now();
     let i=1;
-    while(i<=100){
-        if(i % 3 == 0 && i % 5 == 0){
-            console.log(divBy3and5);
-        } else if (i % 3 == 0){
-            console.log(divBy3);
-        }else if(i % 5 == 0){
-            console.log(divBy5);
-        }else{
-            console.log(i);
-        }
+    while(i<=limit){
+        dividedByLogs(i, firstDivider, firstDividerText, secondDivider, secondDividerText, bothDividersText);
         i++;
     }
     const t1 = performance.now();
     return t1-t0;
 }
 
-//Function without parameters
-// function doWhileLoop(){
-//     console.warn("do-while");
-//     let i=0;
-//     const t0 = performance.now();
-//     do{
-//         i++;
-//         if(i % 3 == 0 && i % 5 == 0){
-//             console.log(divBy3and5);
-//         } else if (i % 3 == 0){
-//             console.log(divBy3);
-//         }else if(i % 5 == 0){
-//             console.log(divBy5);
-//         }else{
-//             console.log(i);
-//         }
-//     } while(i<n);
-//         const t1 = performance.now();
-//         doWhileExecutionTime =  t1-t0;
-// }
-
 //function with parameter with default value
-function doWhileLoop(limit){
+const doWhileExecutionTime = (limit= 30) => {
     console.warn("do-while");
     let i=0;
     const t0 = performance.now();
     do{
         i++;
-        if(i % 3 == 0 && i % 5 == 0){
-            console.log(divBy3and5);
-        } else if (i % 3 == 0){
-            console.log(divBy3);
-        }else if(i % 5 == 0){
-            console.log(divBy5);
-        }else{
-            console.log(i);
-        }
+        dividedByLogs(i, firstDivider, firstDividerText, secondDivider, secondDividerText, bothDividersText);
     } while(i<limit);
         const t1 = performance.now();
         return t1-t0;
 }
 
-function forExecutionTime(limit=30){
+const forExecutionTime = (limit = 30) => {
     console.warn("for loop");
     const t0 = performance.now();
     for(let i=1; i<=limit; i++){
-        if(i % 3 == 0 && i % 5 == 0){
-            console.log(divBy3and5);
-        } else if (i % 3 == 0){
-            console.log(divBy3);
-        }else if(i % 5 == 0){
-            console.log(divBy5);
-        }else{
-            console.log(i);
-        }
+        dividedByLogs(i, firstDivider, firstDividerText, secondDivider, secondDividerText, bothDividersText);
     }
     const t1 = performance.now();
     return t1-t0;
 }
 
-const whileExecutionTimeCall = whileExecutionTime.call();
-//doWhileLoop();
-doWhileExecutionTime = doWhileLoop(n);
-console.error('Execution time for "for" loop is: ' + forExecutionTime(n) + ' milliseconds.');
-console.error('Execution time for "while" loop is: ' + whileExecutionTimeCall + ' milliseconds.');
-console.error('Execution time for "do-while" loop is: ' + doWhileExecutionTime + ' milliseconds.');
+//let whileExecutionTimeCall = whileExecutionTime(n);
+let doWhileExecutionTimeCall = doWhileExecutionTime(n);
+let forExecutionTimeCall = forExecutionTime(n);
+
+console.error('Execution time for "while" loop is: ' + whileExecutionTime(n).toFixed(2) + ' milliseconds.');
+console.error('Execution time for "do-while" loop is: ' + doWhileExecutionTimeCall.toFixed(2) + ' milliseconds.');
+console.error('Execution time for "for" loop is: ' + forExecutionTimeCall.toFixed(2) + ' milliseconds.');
