@@ -73,3 +73,40 @@ console.log("-- name comparision --");
 console.log(`${myName} > ${friendName}: `, myName > friendName);
 console.log( myName + " < " + friendName + ": " + (myName < friendName));
 console.log("myName === friendName: ", myName === friendName);
+
+
+//---Truthy and Falsy -------------------------------------------------
+
+console.trace();
+
+const truthyOrFalsyChecker = (value) => {
+    if(value){
+        console.log(`${value} of type ${typeof(value)} is truthy.`);
+        return {value: value, result: "truthy"};
+    }
+    else{
+        console.log(`${value} of type ${typeof value} is falsy.`);
+        return { value: value, result: "falsy"};
+    }
+}
+
+let array = [
+    truthyOrFalsyChecker(0),
+    truthyOrFalsyChecker("0"),
+    truthyOrFalsyChecker(true), 
+    truthyOrFalsyChecker(false), 
+    truthyOrFalsyChecker(Infinity), 
+    truthyOrFalsyChecker(-Infinity), 
+    truthyOrFalsyChecker(""),
+    truthyOrFalsyChecker("Kasia"),
+    truthyOrFalsyChecker(25.123),
+    truthyOrFalsyChecker({}),
+    truthyOrFalsyChecker([]),
+    truthyOrFalsyChecker(truthyOrFalsyChecker),
+    truthyOrFalsyChecker(-23),
+    truthyOrFalsyChecker(null),
+    truthyOrFalsyChecker(NaN),
+    truthyOrFalsyChecker(undefined),
+];
+
+console.table(array);
