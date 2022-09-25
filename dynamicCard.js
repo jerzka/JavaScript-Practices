@@ -50,11 +50,11 @@ const product = (prodName, prodPhoto, prodDescription) => ({
 });
 
 
-const array = [
+const productsArray = [
     product("Cafe Americano", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-03/3-CaffeAmericano_ContactShadow_Green.png?itok=Kl-bJG_e", "In the morning"),
     product("Cafe au Lait", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_BAB_CAFE_AU_LAIT_CS-min.png?itok=JoWLDPcf", "In the afternoon"),
     product("Capuccino", "https://www.starbucksathome.com/ca/sites/default/files/styles/rdp_banner_image/public/2021-05/10032021_CAPPUCCINO_CS-min.png?itok=n_45xlrE", "In the evening")
 ];
 
-array.forEach((item)=> item.propagate());
+productsArray.forEach((item)=> item.propagate());
 
