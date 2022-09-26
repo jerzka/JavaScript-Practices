@@ -1,4 +1,4 @@
-const container = document.getElementById("container");
+const container = document.getElementById("productsContainer");
 const template = document.getElementsByTagName("template")[0];  
 
 if ('content' in document.createElement('template')) {
@@ -26,7 +26,7 @@ const product = (prodName, prodPhoto, prodDescription) => ({
             evt.target.textContent = `Buy one of ${this._quantity}`;  
             }
         else{
-            alert("Brak produktu");
+            alert("Sorry, product is not available.");
         }
         console.log(`prod quantity is ${this._quantity}`);
     },
