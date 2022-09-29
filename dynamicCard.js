@@ -1,15 +1,29 @@
 
 import { productsArray as products } from "./products.js";
+import {clone, create} from './template.js';
 
+let show = true;
 
-if ('content' in document.createElement('template')) {
-    console.log("Your browser supports the HTML template element.");
-
+function render(product){
     const container = document.getElementById("productsContainer");
-    const template = document.getElementsByTagName("template")[0];  
+    let productNode;
+    if (false){//'content' in document.createElement('template')) {
+        console.log("Your browser supports the HTML template element.");
+        productNode = clone(product); 
+    }
+    else{
+        if(show == true){
+            alert('The HTML template element is not supported.');
+           show = false; 
+        }
 
-    products.forEach((item) => item.populate(container, template));    
+        productNode = create(product);
+    }
+
+    container.appendChild(productNode);
 }
-else{
-    alert('The HTML template element is not supported.');
-}
+
+products.forEach((item) => {
+    item.populate();
+    render(item);
+});    
